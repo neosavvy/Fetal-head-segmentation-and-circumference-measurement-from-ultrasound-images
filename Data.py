@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 
 
-dir = 'C:/Users/pranjal/Desktop/Project/Deep Learning/Fetal head circumference/'
+dir = '/home/ubuntu/aae/'
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu") # Loads to the GPU 
 x_size = (572, 572)
 y_size = (572, 572)
@@ -13,12 +13,12 @@ class Data(torch.utils.data.Dataset):
 
     def __init__(self, data, transform=None):
 
-        self.x_train = sorted(glob.glob(dir+'Dataset/Segmentation/train/*HC.png'))
-        self.x_val = sorted(glob.glob(dir+'Dataset/Segmentation/validate/*HC.png'))
-        self.x_test = sorted(glob.glob(dir+'test_set/*HC.png'))
-        self.y_train = sorted(glob.glob(dir+'Dataset/Segmentation/train/*_Annotation.png'))
-        self.y_val = sorted(glob.glob(dir+'Dataset/Segmentation/validate/*_Annotation.png'))
-        self.y_test = sorted(glob.glob(dir+'test_set/*HC_Annotation.png'))
+        self.x_train = sorted(glob.glob(dir+'data/training_set/*HC.png'))
+        self.x_val = sorted(glob.glob(dir+'data/val_set/*HC.png'))
+        self.x_test = sorted(glob.glob(dir+'data/test_set/*HC.png'))
+        self.y_train = sorted(glob.glob(dir+'data/training_set/*_Mask.png'))
+        self.y_val = sorted(glob.glob(dir+'data/val_set/*_Mask.png'))
+        self.y_test = sorted(glob.glob(dir+'data/test_set/*HC_Annotation.png'))
         self.data = data
 
 
